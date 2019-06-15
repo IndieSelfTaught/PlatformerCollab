@@ -3,7 +3,7 @@ extends KinematicBody2D
 var move = 0
 export var speed = 300
 var gravity = 9.81
-export var jump_force = -400
+export var jump_force = -650
 var velocity = Vector2(0, 0)
 var prev_grounded = false
 var grounded = false
