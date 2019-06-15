@@ -16,4 +16,5 @@ _global_script_class_icons={
 [application]
 
 config/name="PlatformerCollab"
-config/icon="res://Misc/icon.png"
+run/main_scene="res://Levels/1/1.tscn"
+config/icon="res://Misc/Logo.png"
