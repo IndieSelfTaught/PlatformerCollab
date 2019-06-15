@@ -9,14 +9,12 @@
 script = ExtResource( 1 )
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2( 2.5, -10.16 )
-scale = Vector2( 2.75, 4 )
+position = Vector2( 0.54, -14 )
+scale = Vector2( 0.55, 0.8 )
 shape = SubResource( 1 )
 
 [node name="Visual" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -15 )
-scale = Vector2( 5, 5 )
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 2
 playing = true

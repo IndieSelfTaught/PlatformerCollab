@@ -1,15 +1,15 @@
 extends KinematicBody2D
 
 var move = 0
-export var speed = 300
-var gravity = 9.81
-export var jump_force = -650
+export var speed = 60
+var gravity = 1.962
+export var jump_force = -130
 var velocity = Vector2(0, 0)
 var prev_grounded = false
 var grounded = false
 var attack_done = true
 var sprinting = false
-var sprint_speed = 400
+var sprint_speed = 80
 
 
 func jump():
@@ -23,9 +23,9 @@ func _physics_process(delta):
 	move_and_slide(velocity)
 	grounded = is_on_wall()
 	if velocity.y > 0:
-		gravity = 9.81 * 2.25
+		gravity = 1.962 * 2.50
 	else:
-		gravity = 9.81
+		gravity = 1.962
 
 func _process(delta):
 		
