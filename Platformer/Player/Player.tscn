@@ -14,5 +14,9 @@ scale = Vector2( 2.75, 4 )
 shape = SubResource( 1 )
 
 [node name="Visual" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -15 )
+scale = Vector2( 5, 5 )
 frames = ExtResource( 2 )
 animation = "Idle"
+frame = 3
+playing = true
