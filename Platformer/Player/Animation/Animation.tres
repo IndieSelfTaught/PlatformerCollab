@@ -4,15 +4,15 @@
 [ext_resource path="res://Player/Sprites/Idle/Idle1.tres" type="Texture" id=2]
 [ext_resource path="res://Player/Sprites/Idle/Idle2.tres" type="Texture" id=3]
 [ext_resource path="res://Player/Sprites/Idle/Idle3.tres" type="Texture" id=4]
-[ext_resource path="res://Player/Sprites/Land/Land.tres" type="Texture" id=5]
-[ext_resource path="res://Player/Sprites/Attack/Attack0.tres" type="Texture" id=6]
-[ext_resource path="res://Player/Sprites/Attack/Attack1.tres" type="Texture" id=7]
-[ext_resource path="res://Player/Sprites/Attack/Attack2.tres" type="Texture" id=8]
-[ext_resource path="res://Player/Sprites/Run/Run0.tres" type="Texture" id=9]
-[ext_resource path="res://Player/Sprites/Run/Run1.tres" type="Texture" id=10]
-[ext_resource path="res://Player/Sprites/Run/Run2.tres" type="Texture" id=11]
-[ext_resource path="res://Player/Sprites/Run/Run3.tres" type="Texture" id=12]
-[ext_resource path="res://Player/Sprites/InAir/InAir.tres" type="Texture" id=13]
+[ext_resource path="res://Player/Sprites/InAir/InAir.tres" type="Texture" id=5]
+[ext_resource path="res://Player/Sprites/Run/Run0.tres" type="Texture" id=6]
+[ext_resource path="res://Player/Sprites/Run/Run1.tres" type="Texture" id=7]
+[ext_resource path="res://Player/Sprites/Run/Run2.tres" type="Texture" id=8]
+[ext_resource path="res://Player/Sprites/Run/Run3.tres" type="Texture" id=9]
+[ext_resource path="res://Player/Sprites/Attack/Attack0.tres" type="Texture" id=10]
+[ext_resource path="res://Player/Sprites/Attack/Attack1.tres" type="Texture" id=11]
+[ext_resource path="res://Player/Sprites/Attack/Attack2.tres" type="Texture" id=12]
+[ext_resource path="res://Player/Sprites/Land/Land.tres" type="Texture" id=13]
 
 [resource]
 animations = [ {
@@ -23,21 +23,21 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "Land",
+"name": "InAir",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "Run",
+"speed": 7.5
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "Attack",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "Run",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
-"name": "InAir",
+"name": "Land",
 "speed": 5.0
 } ]

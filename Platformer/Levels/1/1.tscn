@@ -13,4 +13,6 @@ position = Vector2( 500, 499.94 )
 scale = Vector2( 50, 1 )
 shape = SubResource( 1 )
 
+[node name="Sprite" type="Sprite" parent="Ground"]
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
