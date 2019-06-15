@@ -28,7 +28,6 @@ func _physics_process(delta):
 		gravity = 1.962
 
 func _process(delta):
-		
 	if grounded != true:
 		$Visual.animation = "InAir"
 	else:
