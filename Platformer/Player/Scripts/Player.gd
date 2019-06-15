@@ -8,6 +8,8 @@ var velocity = Vector2(0, 0)
 var prev_grounded = false
 var grounded = false
 var attack_done = true
+var sprinting = false
+var sprint_speed = 400
 
 
 func jump():
@@ -56,10 +58,16 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_W):
 		if grounded == true:
 			attack()
-	
+	sprinting = Input.is_key_pressed(KEY_SHIFT)
 	if grounded and !prev_grounded:
 		$Visual.animation = "Land"
-	velocity.x = move * speed
+	
+	if sprinting:
+		velocity.x = move * sprint_speed
+		$Visual.speed_scale = 1.25
+	else:
+		velocity.x = move * speed
+		$Visual.speed_scale = 1
 	
 	velocity.y += gravity
 	
