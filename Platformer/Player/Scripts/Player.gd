@@ -20,6 +20,10 @@ func attack():
 func _physics_process(delta):
 	move_and_slide(velocity)
 	grounded = is_on_wall()
+	if velocity.y > 0:
+		gravity = 9.81 * 2.25
+	else:
+		gravity = 9.81
 
 func _process(delta):
 		
