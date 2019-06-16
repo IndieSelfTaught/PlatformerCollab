@@ -6,15 +6,42 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="Securibot" type="KinematicBody2D"]
+input_pickable = true
 script = ExtResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collider" type="CollisionShape2D" parent="."]
 scale = Vector2( 0.6, 0.9 )
 shape = SubResource( 1 )
 
 [node name="Visual" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "Run"
-frame = 2
 playing = true
 flip_h = true
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Area" type="Area2D" parent="."]
+position = Vector2( 0, -1 )
+
+[node name="Collider" type="CollisionShape2D" parent="Area"]
+scale = Vector2( 0.75, 1 )
+shape = SubResource( 1 )
+
+[node name="GroundCheck0" type="RayCast2D" parent="."]
+position = Vector2( -2, 0 )
+scale = Vector2( 0.1, 1 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+
+[node name="GroundCheck1" type="RayCast2D" parent="."]
+position = Vector2( 2, 0 )
+scale = Vector2( 0.1, 1 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+
+[node name="GroundCheckTimeout" type="Timer" parent="."]
+[connection signal="timeout" from="DeathTimer" to="." method="OnDeath"]
+[connection signal="body_entered" from="Area" to="." method="OnBodyEnter"]
+[connection signal="timeout" from="GroundCheckTimeout" to="." method="OnGroundCheckReady"]

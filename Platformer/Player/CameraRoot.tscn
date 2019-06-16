@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player/Scripts/Follow.gd" type="Script" id=1]
+[ext_resource path="res://Level Items/Pickups/Microchip/Sprites/UI/NotFound.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+[node name="CameraRoot" type="KinematicBody2D"]
+editor/display_folded = true
+script = ExtResource( 1 )
+
+[node name="MainCamera" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.25, 0.25 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="MainCamera"]
+
+[node name="Chip0" type="TextureRect" parent="MainCamera/CanvasLayer"]
+anchor_right = 1.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 90.0
+margin_bottom = 90.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+stretch_mode = 5
+
+[node name="Chip1" type="TextureRect" parent="MainCamera/CanvasLayer"]
+anchor_right = 1.0
+margin_left = 110.0
+margin_top = 50.0
+margin_right = 90.0
+margin_bottom = 90.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+stretch_mode = 5
+
+[node name="Chip2" type="TextureRect" parent="MainCamera/CanvasLayer"]
+anchor_right = 1.0
+margin_left = 170.0
+margin_top = 50.0
+margin_right = 90.0
+margin_bottom = 90.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+stretch_mode = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+disabled = true

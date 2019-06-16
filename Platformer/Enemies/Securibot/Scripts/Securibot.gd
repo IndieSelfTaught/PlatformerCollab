@@ -1,17 +1,52 @@
 extends KinematicBody2D
 
-export var walk_distance = 180
 
-var velocity = Vector2(-60, 0)
+var wall = false
 
-var current = 0
+var normal_velocity = Vector2(-60, 0)
+var velocity = normal_velocity
+var hacked_velocity = Vector2(-30, 0)
+var died = false
+
+var hacked = false
+
+func hack():
+	hacked = true
+	$Visual.animation = "RunHacked"
+	velocity = hacked_velocity
+func disable_hack():
+	hacked = false
+	$Visual.animation = "Run"
+	velocity = normal_velocity
+
+func kill():
+	$Collider.disabled = true
+	died = true
+	$DeathTimer.start()
 
 func _process(delta):
-	move_and_slide(velocity)
-	
-	if current >= walk_distance:
-		current = 0
-		velocity.x = -velocity.x
-		$Visual.flip_h = !$Visual.flip_h
+	if died != true:
+		move_and_slide(velocity)
+		if wall == true:
+			velocity.x = -velocity.x
+			$Visual.flip_h = !$Visual.flip_h
+			wall = false
+	if $GroundCheck0.is_colliding() == false or $GroundCheck1.is_colliding() == false:
+		wall = true
+		$GroundCheck0.enabled = false
+		$GroundCheck1.enabled = false
+		$GroundCheckTimeout.start()
+
+func OnDeath():
+	queue_free()
+
+
+func OnBodyEnter(body):
+	if "Player" in body.name or "One Way" in body.get_parent().name:
+		pass
 	else:
-		current += 1
+		wall = true
+
+func OnGroundCheckReady():
+	$GroundCheck0.enabled = true
+	$GroundCheck1.enabled = true

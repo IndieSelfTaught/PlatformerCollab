@@ -10,6 +10,7 @@ var grounded = false
 var attack_done = true
 var sprinting = false
 var sprint_speed = 80
+var died = false
 
 
 func jump():
@@ -18,9 +19,11 @@ func jump():
 func attack():
 	$Visual.animation = "Attack"
 	attack_done = false
+	$AttackTimer.start()
 	
 func _physics_process(delta):
-	move_and_slide(velocity)
+	if died != true:
+		move_and_slide(velocity)
 	grounded = is_on_wall()
 	if velocity.y > 0:
 		gravity = 1.962 * 2.50
@@ -41,12 +44,14 @@ func _process(delta):
 				attack_done = true
 	if Input.is_key_pressed(KEY_A):
 		move = -1
-		$Visual.flip_h = true
+		if died != true:
+			$Visual.flip_h = true
 		
 	
 	elif Input.is_key_pressed(KEY_D):
 		move = 1
-		$Visual.flip_h = false
+		if died != true:
+			$Visual.flip_h = false
 	else:
 		move = 0
 		
@@ -55,8 +60,7 @@ func _process(delta):
 			jump()
 	
 	if Input.is_key_pressed(KEY_W):
-		if grounded == true:
-			attack()
+		attack()
 	sprinting = Input.is_key_pressed(KEY_SHIFT)
 	if grounded and !prev_grounded:
 		$Visual.animation = "Land"
@@ -72,3 +76,25 @@ func _process(delta):
 	
 	prev_grounded = grounded
 	
+func die():
+	died = true
+	$DeathTimer.start()
+
+func OnDeath():
+	get_parent().get_node("CameraRoot").set("player_existant", false)
+	queue_free()
+
+
+func OnAreaEnter(area):
+		if area.get_parent().name == "Securibot":
+			if area.get_parent().hacked != true:
+				if attack_done:
+					die()
+				else:
+					area.get_parent().call("kill")
+			else:
+				area.get_parent().call("kill")
+
+
+func OnAttackDone():
+	attack_done = true
