@@ -1,0 +1,29 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=2]
+
+[ext_resource path="res://Level Items/Hazards/Laser/Sprites/Mid.tres" type="Texture" id=1]
+[ext_resource path="res://Level Items/Hazards/Laser/Sprites/Base.tres" type="Texture" id=2]
+[ext_resource path="res://Level Items/Hazards/Laser/Sprites/Hacked/HackedBase.tres" type="Texture" id=3]
+[ext_resource path="res://Level Items/Hazards/Laser/Sprites/Hacked/HackedMid.tres" type="Texture" id=4]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Normal Mid",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Normal Base",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Hacked Base",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Hacked Mid",
+"speed": 5.0
+} ]

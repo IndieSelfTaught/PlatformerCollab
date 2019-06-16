@@ -86,7 +86,7 @@ func OnDeath():
 
 
 func OnAreaEnter(area):
-		if area.get_parent().name == "Securibot":
+		if area.get_parent().name == "Securibot" or area.get_parent().name == "Gearbot":
 			if area.get_parent().hacked != true:
 				if attack_done:
 					die()

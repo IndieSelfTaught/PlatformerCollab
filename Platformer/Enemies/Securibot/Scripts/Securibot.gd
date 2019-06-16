@@ -13,11 +13,14 @@ var hacked = false
 func hack():
 	hacked = true
 	$Visual.animation = "RunHacked"
+	$Visual.speed_scale = .5
 	velocity = hacked_velocity
 func disable_hack():
 	hacked = false
-	$Visual.animation = "Run"
-	velocity = normal_velocity
+	if died != true:
+		$Visual.animation = "Run"
+		$Visual.speed_scale = 1
+		velocity = normal_velocity
 
 func kill():
 	$Collider.disabled = true

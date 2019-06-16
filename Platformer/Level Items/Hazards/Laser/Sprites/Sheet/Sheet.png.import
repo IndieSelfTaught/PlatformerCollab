@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sheet.png-ffd01639ec97cd23e347b3a83224e9ef.stex"
+path="res://.import/Sheet.png-91e02e483f8099179778bfa29c78273a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Level Items/Hazards/Laser/Sprites/Sheet.png"
-dest_files=[ "res://.import/Sheet.png-ffd01639ec97cd23e347b3a83224e9ef.stex" ]
+source_file="res://Level Items/Hazards/Laser/Sprites/Sheet/Sheet.png"
+dest_files=[ "res://.import/Sheet.png-91e02e483f8099179778bfa29c78273a.stex" ]
 
 [params]
 
