@@ -78,6 +78,7 @@ func _process(delta):
 	
 func die():
 	died = true
+	$Visual.animation = "Death"
 	$DeathTimer.start()
 
 func OnDeath():
@@ -86,7 +87,7 @@ func OnDeath():
 
 
 func OnAreaEnter(area):
-		if area.get_parent().name == "Securibot" or area.get_parent().name == "Gearbot":
+		if area.get_parent().name == "Securibot" or area.get_parent().name == "Gearbot" or area.get_parent().name == "LaserBase"  or area.get_parent().name == "LaserMid":
 			if area.get_parent().hacked != true:
 				if attack_done:
 					die()
