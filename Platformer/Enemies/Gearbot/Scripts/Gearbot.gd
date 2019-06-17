@@ -8,7 +8,9 @@ var hacked = false
 var normal_speed = 30
 var speed = normal_speed
 var hacked_speed = 15
-var direction = Vector2(0, 1)
+var move = 1
+
+export var vertical = false
 
 func kill():
 	$Collider.disabled = true
@@ -16,39 +18,33 @@ func kill():
 	$DeathTimer.start()
 func hack():
 	hacked = true
-	$Visual.animation = "RotateHacked"
+	if vertical:
+		$Visual.animation = "V Hacked"
+	else:
+		$Visual.animation = "H Hacked"
 	speed = hacked_speed
 func disable_hack():
 	hacked = false
-	$Visual.animation = "Rotate"
+	if vertical:
+		$Visual.animation = "V"
+	else:
+		$Visual.animation = "H"
 	speed = normal_speed
 	
+func _ready():
+	if vertical:
+		$Visual.animation = "V"
+	else:
+		$Visual.animation = "H"
 func _process(delta):
 	if died != true:
-		move_and_slide(direction * speed)
+		if vertical:
+			move_and_slide(Vector2(0, speed * move))
+		else:
+			move_and_slide(Vector2(-speed * move, 0))
+		if is_on_wall():
+			move = -move
 		$Visual.playing = true
-	else:
-		$Visual.playing = false
-	if $Right.is_colliding() and $Bottom.is_colliding():
-		if direction.x != 0:
-			direction = Vector2(0, -1)
-		else:
-			direction = Vector2(1, 0)
-	elif $Right.is_colliding() and $Top.is_colliding():
-		if direction.x != 0:
-			direction = Vector2(0, 1)
-		else:
-			direction = Vector2(1, 0)
-	elif $Left.is_colliding() and $Top.is_colliding():
-		if direction.x != 0:
-			direction = Vector2(0, 1)
-		else:
-			direction = Vector2(-1, 0)
-	elif $Left.is_colliding() and $Bottom.is_colliding():
-		if direction.x != 0:
-			direction = Vector2(0, -1)
-		else:
-			direction = Vector2(-1, 0)
 			
 
 func OnDeath():

@@ -1,19 +1,29 @@
 [gd_resource type="SpriteFrames" load_steps=5 format=2]
 
-[ext_resource path="res://Enemies/Gearbot/Sprites/Hacked/Rotate/HackedHorizontal.tres" type="Texture" id=1]
-[ext_resource path="res://Enemies/Gearbot/Sprites/Hacked/Rotate/HackedVertical.tres" type="Texture" id=2]
-[ext_resource path="res://Enemies/Gearbot/Sprites/Rotate/Horizontal.tres" type="Texture" id=3]
-[ext_resource path="res://Enemies/Gearbot/Sprites/Rotate/Vertical.tres" type="Texture" id=4]
+[ext_resource path="res://Enemies/Gearbot/Sprites/Rotate/Horizontal.tres" type="Texture" id=1]
+[ext_resource path="res://Enemies/Gearbot/Sprites/Hacked/Rotate/HackedHorizontal.tres" type="Texture" id=2]
+[ext_resource path="res://Enemies/Gearbot/Sprites/Rotate/Vertical.tres" type="Texture" id=3]
+[ext_resource path="res://Enemies/Gearbot/Sprites/Hacked/Rotate/HackedVertical.tres" type="Texture" id=4]
 
 [resource]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 1 ) ],
 "loop": true,
-"name": "RotateHacked",
+"name": "H",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "H Hacked",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "Rotate",
-"speed": 4.0
+"name": "V",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "V Hacked",
+"speed": 5.0
 } ]
