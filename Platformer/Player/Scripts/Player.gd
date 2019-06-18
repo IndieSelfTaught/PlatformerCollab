@@ -3,7 +3,7 @@ extends KinematicBody2D
 var move = 0
 export var speed = 60
 var gravity = 1.962
-export var jump_force = -130
+export var jump_force = -100
 var velocity = Vector2(0, 0)
 var prev_grounded = false
 var grounded = false
@@ -99,3 +99,4 @@ func OnAreaEnter(area):
 
 func OnAttackDone():
 	attack_done = true
+	$Visual.animation = "Idle"
