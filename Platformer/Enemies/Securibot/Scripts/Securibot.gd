@@ -3,9 +3,9 @@ extends KinematicBody2D
 
 var wall = false
 
-var normal_velocity = Vector2(-60, 0)
-var velocity = normal_velocity
-var hacked_velocity = Vector2(-30, 0)
+var normal_velocity = Vector2(60, 0)
+var velocity = Vector2(normal_velocity.x, 0)
+var hacked_velocity = Vector2(30, 0)
 var died = false
 
 var hacked = false
@@ -13,14 +13,14 @@ var hacked = false
 func hack():
 	hacked = true
 	$Visual.animation = "RunHacked"
-	$Visual.speed_scale = .5
-	velocity = hacked_velocity
+	$Visual.speed_scale = .25
+	velocity.x = hacked_velocity.x
 func disable_hack():
 	hacked = false
 	if died != true:
 		$Visual.animation = "Run"
 		$Visual.speed_scale = 1
-		velocity = normal_velocity
+		velocity.x = normal_velocity.x
 
 func kill():
 	$Collider.disabled = true
@@ -28,17 +28,13 @@ func kill():
 	$DeathTimer.start()
 
 func _process(delta):
+	
 	if died != true:
 		move_and_slide(velocity)
 		if wall == true:
 			velocity.x = -velocity.x
 			$Visual.flip_h = !$Visual.flip_h
 			wall = false
-	if $GroundCheck0.is_colliding() == false or $GroundCheck1.is_colliding() == false:
-		wall = true
-		$GroundCheck0.enabled = false
-		$GroundCheck1.enabled = false
-		$GroundCheckTimeout.start()
 
 func OnDeath():
 	queue_free()
@@ -50,6 +46,14 @@ func OnBodyEnter(body):
 	else:
 		wall = true
 
-func OnGroundCheckReady():
-	$GroundCheck0.enabled = true
-	$GroundCheck1.enabled = true
+
+func OnBodyExit(body):
+	wall = true
+	get_node("LedgeCheck0/Collider").disabled = true
+	get_node("LedgeCheck1/Collider").disabled = true
+	$LedgeCheckCooldown.start()
+
+
+func OnLedgeCheckReady():
+	get_node("LedgeCheck0/Collider").disabled = false
+	get_node("LedgeCheck1/Collider").disabled = false

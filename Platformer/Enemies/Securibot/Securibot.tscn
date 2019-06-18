@@ -16,8 +16,8 @@ shape = SubResource( 1 )
 [node name="Visual" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "Run"
+frame = 1
 playing = true
-flip_h = true
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -29,19 +29,26 @@ position = Vector2( 0, -1 )
 scale = Vector2( 0.75, 1 )
 shape = SubResource( 1 )
 
-[node name="GroundCheck0" type="RayCast2D" parent="."]
-position = Vector2( -2, 0 )
-scale = Vector2( 0.1, 1 )
-enabled = true
-cast_to = Vector2( 0, 10 )
+[node name="LedgeCheck0" type="Area2D" parent="."]
+position = Vector2( 0, -1 )
 
-[node name="GroundCheck1" type="RayCast2D" parent="."]
-position = Vector2( 2, 0 )
-scale = Vector2( 0.1, 1 )
-enabled = true
-cast_to = Vector2( 0, 10 )
+[node name="Collider" type="CollisionShape2D" parent="LedgeCheck0"]
+position = Vector2( -5, 11 )
+scale = Vector2( 0.1, 0.1 )
+shape = SubResource( 1 )
 
-[node name="GroundCheckTimeout" type="Timer" parent="."]
+[node name="LedgeCheck1" type="Area2D" parent="."]
+position = Vector2( 0, -1 )
+
+[node name="Collider" type="CollisionShape2D" parent="LedgeCheck1"]
+position = Vector2( 5, 11 )
+scale = Vector2( 0.1, 0.1 )
+shape = SubResource( 1 )
+
+[node name="LedgeCheckCooldown" type="Timer" parent="."]
+wait_time = 0.5
 [connection signal="timeout" from="DeathTimer" to="." method="OnDeath"]
 [connection signal="body_entered" from="Area" to="." method="OnBodyEnter"]
-[connection signal="timeout" from="GroundCheckTimeout" to="." method="OnGroundCheckReady"]
+[connection signal="body_exited" from="LedgeCheck0" to="." method="OnBodyExit"]
+[connection signal="body_exited" from="LedgeCheck1" to="." method="OnBodyExit"]
+[connection signal="timeout" from="LedgeCheckCooldown" to="." method="OnLedgeCheckReady"]

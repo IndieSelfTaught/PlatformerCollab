@@ -18,7 +18,7 @@ wait_time = 2.0
 
 [node name="Visual" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
-animation = "Rotate"
+animation = "H"
 playing = true
 
 [node name="Area" type="Area2D" parent="."]
